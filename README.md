@@ -12,7 +12,51 @@ No LLMs. No cloud APIs. Zero tokens burned. Just fast, local document conversion
 - **Batch processing** - convert entire directories at once
 - **Lightweight** - uses Microsoft's markitdown library, no heavy dependencies
 
+## Getting Started: Opening Terminal
+
+If you've never used Terminal before, don't worry — it's simpler than it looks. Terminal is just a text-based way to give your computer instructions.
+
+### On Mac
+
+1. Press **Command + Space** to open Spotlight Search
+2. Type **Terminal**
+3. Press **Enter** or click on Terminal.app
+
+A window will open with a blinking cursor. That's your terminal — you're ready to type commands.
+
+### On Windows
+
+1. Press the **Windows key** on your keyboard
+2. Type **cmd** or **PowerShell**
+3. Press **Enter**
+
+A window will open with a blinking cursor. That's your terminal — you're ready to type commands.
+
+**Tip:** You can also right-click the Start button and select "Windows PowerShell" or "Terminal".
+
+### How to use Terminal
+
+- **Type a command** and press **Enter** to run it
+- **Copy/paste** works normally (Command+C/V on Mac, Ctrl+C/V on Windows)
+- **To stop a command** that's running, press **Ctrl+C**
+- **To clear the screen**, type `clear` (Mac) or `cls` (Windows) and press Enter
+
+That's it! You're ready to install and use mdg.
+
 ## Installation
+
+### Prerequisites
+
+You need Python 3.10 or higher installed on your computer.
+
+**Check if you have Python:**
+```bash
+python --version
+```
+
+If you see "Python 3.10" or higher, you're good. If not:
+- **Mac:** Download from [python.org](https://www.python.org/downloads/) or run `brew install python`
+- **Windows:** Download from [python.org](https://www.python.org/downloads/) (check "Add Python to PATH" during installation)
 
 ### Option 1: pipx (Recommended)
 
@@ -20,10 +64,10 @@ No LLMs. No cloud APIs. Zero tokens burned. Just fast, local document conversion
 
 ```bash
 # Install pipx if you don't have it
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
+python -m pip install --user pipx
+python -m pipx ensurepath
 
-# Install mdg
+# Restart your terminal, then install mdg
 pipx install git+https://github.com/futureformed/markdowngetdown.git
 ```
 
@@ -40,6 +84,15 @@ git clone https://github.com/futureformed/markdowngetdown.git
 cd markdowngetdown
 pip install .
 ```
+
+### Verify installation
+
+After installing, close and reopen your terminal, then run:
+```bash
+mdg --help
+```
+
+If you see usage information, you're ready to go!
 
 ## Usage
 
@@ -76,9 +129,16 @@ mdg merge file1.md file2.md
 
 ### Convert meeting notes and merge them
 
+**Mac/Linux:**
 ```bash
 mdg convert ~/Documents/meetings/ -o ~/Documents/meetings-md/
 mdg merge ~/Documents/meetings-md/ -o ~/Documents/all-meetings.md
+```
+
+**Windows:**
+```powershell
+mdg convert C:\Users\YourName\Documents\meetings\ -o C:\Users\YourName\Documents\meetings-md\
+mdg merge C:\Users\YourName\Documents\meetings-md\ -o C:\Users\YourName\Documents\all-meetings.md
 ```
 
 ### Batch convert reports
@@ -87,6 +147,45 @@ mdg merge ~/Documents/meetings-md/ -o ~/Documents/all-meetings.md
 mdg convert ./reports/ -o ./reports-md/
 mdg merge ./reports-md/Q1.md ./reports-md/Q2.md ./reports-md/Q3.md ./reports-md/Q4.md -o annual-report.md
 ```
+
+## Troubleshooting
+
+### "mdg: command not found" (Mac/Linux) or "'mdg' is not recognized" (Windows)
+
+This means mdg isn't in your system PATH. Try these steps:
+
+1. **Close and reopen your terminal** — sometimes PATH changes need a fresh terminal
+2. **Check if pipx installed correctly:**
+   ```bash
+   pipx list
+   ```
+   You should see `mdg` in the list
+3. **Reinstall with pip instead:**
+   ```bash
+   pip install git+https://github.com/futureformed/markdowngetdown.git
+   ```
+
+### "python: command not found" (Mac/Linux) or "'python' is not recognized" (Windows)
+
+Python isn't installed or isn't in your PATH:
+- **Mac:** Run `brew install python` or download from [python.org](https://www.python.org/downloads/)
+- **Windows:** Download from [python.org](https://www.python.org/downloads/) and **make sure to check "Add Python to PATH"** during installation, then restart your terminal
+
+### Permission errors on Mac/Linux
+
+If you get permission errors, try adding `--user` to pip commands:
+```bash
+pip install --user git+https://github.com/futureformed/markdowngetdown.git
+```
+
+### Windows: "Execution Policy" error in PowerShell
+
+If you see an error about execution policy, run this command first:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+Then try installing again.
 
 ## Uninstall
 
