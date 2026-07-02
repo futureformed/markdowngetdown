@@ -1,6 +1,10 @@
 .venv/
+test-install/
 __pycache__/
 *.pyc
 *.pyo
 output/
+build/
+*.egg-info/
 .DS_Store
+test-install/
