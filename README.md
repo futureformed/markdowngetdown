@@ -16,6 +16,8 @@ No LLMs. No cloud APIs. Zero tokens burned. Just fast, local document conversion
 
 If you've never used Terminal before, don't worry — it's simpler than it looks. Terminal is just a text-based way to give your computer instructions.
 
+<img width="1610" height="1018" alt="terminal" src="https://github.com/user-attachments/assets/c04e18b3-fa97-4099-bce7-b4add017d8d9" />
+
 ### On Mac
 
 1. Press **Command + Space** to open Spotlight Search
