@@ -1,0 +1,2 @@
+#!/bin/bash
+exec /Users/liamski_imac/Documents/development/markdowngetdown/.venv/bin/python /Users/liamski_imac/Documents/development/markdowngetdown/mdg.py "$@"
